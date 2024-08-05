@@ -9,6 +9,7 @@
 - Learn how a Component is written
 - Learn how to render a Component
 - Observe how to render multiple elements from a list
+- Discuss the importance of the key prop for a list of elements / components
 
 ## Setup
 Please make sure that you are inside the folder for this repository (the `SE-NYC-071524-Phase-2` folder) before following these instructions for setup:
@@ -19,25 +20,77 @@ Please make sure that you are inside the folder for this repository (the `SE-NYC
 npx create-react-app pets-app
 ```
 
-2. Run the following command in the terminal to move inside of the directory for the React application:
+2. Delete the CSS code with the `App.css` file that is within `pets-app/src`. Then, copy & paste the CSS code from the `example.css` file into the `App.css` file.
+
+3. Copy the `images` folder, and paste a copy of it into the `public` folder that is within the `pets-app` folder.
+
+4. Run the following command in the terminal to move inside of the directory for the React application:
 
 ```
 cd pets-app
 ```
 
-3. Run the following command in the terminal to install the dependencies from the `package.json` file:
+5. Run the following command in the terminal to install the dependencies from the `package.json` file:
 
 ```
 npm install
 ```
 
-4. Run the following command in the terminal to start the React application and run the React application in your browser:
+6. Run the following command in the terminal to start the React application and run the React application in your browser:
 
 ```
 npm start
 ```
 
 If your browser does not automatically open the page for you, open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+## Deliverables
+
+We've been asked to build a website for a new pet adoption center, Flatapets, that displays a list of pets available for adoption at this pet adoption center.
+
+Today we will learn about the fundamentals of React, including Components, to help us accomplish some tasks related to displaying data on the website.
+
+1. In the `App.js` file, the `App` component currently returns an `<div>` element with the `className` of `App` that contains some starter code. Delete this `<div>` element along with its starter code.
+2. The `App` component should return a `<div>` element with the `className` of "app".
+3. Create a new file called `Header.js` inside of the `components` folder. Then, inside of the `Header.js` file, create a `Header` component that will return a `<header>` element that contains the following elements inside it:
+   - An `<h1>` element.
+   - The `<h1>` element must have the text "Flatapets" inside it, as well as a `<span>` element inside it.
+   - The `<span>` element must have the `className` of "logo", and must have the 🐈 emoji inside it.
+4. Export your `Header` component from `Header.js`. Import your `Header` component into `App.js`.
+5. Render the `Header` component inside of the `<div>` element returned from the `App` component.
+6. Create a new file called `PetList.js` inside of the `components` folder. Then, inside of the `PetList.js` file, create a `PetList` component that will return a `<ul>` element with the `className` of "pet-list".
+7. Export your `PetList` component from `PetList.js`. Import your `PetList` component into `App.js`.
+8. Render the `PetList` component inside of the `<div>` element returned from the `App` component. The `PetList` component should be rendered after the `Header` component.
+9. Create a folder named `data` inside of the `src` folder that is within the `pets-app` folder.
+10. Create a file named `petsData.js` inside of the `data` folder.
+11. Inside of the `petsData.js` file, write the code to create an array that is stored inside of a variable named `pets`. The array should contain 7 elements, each of which are objects with the following data:
+    - Object # 1 has the following key and value pairs:
+      - A key named `name` with the value of `Fido`
+      - A key named `image` with the value of `images/dog.jpeg`
+    - Object # 2 has the following key and value pairs:
+      - A key named `name` with the value of `Kitty`
+      - A key named `image` with the value of `images/cat.png`
+    - Object # 3 has the following key and value pairs:
+      - A key named `name` with the value of `Hammy`
+      - A key named `image` with the value of `images/hamster.jpeg`
+    - Object # 4 has the following key and value pairs:
+      - A key named `name` with the value of `Polly`
+      - A key named `image` with the value of `images/parrot.jpeg`
+    - Object # 5 has the following key and value pairs:
+      - A key named `name` with the value of `Angel`
+      - A key named `image` with the value of `images/horse.jpeg`
+    - Object # 6 has the following key and value pairs:
+      - A key named `name` with the value of `Fluffy`
+      - A key named `image` with the value of `images/guinea-pig.jpeg`
+    - Object # 7 has the following key and value pairs:
+      - A key named `name` with the value of `Goldie`
+      - A key named `image` with the value of `images/fish.jpeg`
+12. Export the `pets` variable from `petsData.js`. Import the `pets` variable into `PetList.js`.
+13. In the `PetList` component, use the `.map()` array iterator to iterate over the `pets` array that you imported into `PetList.js` and create a list of `<li>` elements which should be rendered inside of the `<ul>` element in the `PetList` component.
+14. Each of the `<li>` elements must contain a `className` of "pet", and must contain the following elements inside it:
+    - An `<img>` element. The `<img>` element's `src` attribute must have the value of the pet's image. The `<img>` element's `alt` attribute must have the value of the pet's name.
+    - An `<h4>` element. The pet's name should display inside of this `<h4>` element.
+15. Create a `key` prop for the `<li>` elements - this is necessary since we are creating a list of `<li>` elements. The value of the `key` prop should be the `id` for the pet object.
 
 ## Creating a React App
 
