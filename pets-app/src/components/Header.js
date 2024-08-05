@@ -1,5 +1,5 @@
+// Deliverable # 4 solution code
 function Header(){
-    // console.log("hello")
     return (
       <header>
         <h1>
@@ -10,4 +10,5 @@ function Header(){
     )
 }
 
+// Deliverable # 5 solution code
 export default Header;
