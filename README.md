@@ -12,6 +12,6 @@
 |3 | State & Events                     |[03_starter](https://github.com/RikkuX491/SE-NYC-071524-Phase-2/tree/03_starter)|||
 |4 | Information Flow                   |[04_starter](https://github.com/RikkuX491/SE-NYC-071524-Phase-2/tree/04_starter)|||
 |5 | Forms                              |[05_starter](https://github.com/RikkuX491/SE-NYC-071524-Phase-2/tree/05_starter)|||
-|6 | Side Effects & Data Fetching       ||||
+|6 | Side Effects & Data Fetching       |[06_starter](https://github.com/RikkuX491/SE-NYC-071524-Phase-2/tree/06_starter)|||
 |7 | PATCH & DELETE                     ||||
 |8 | Client-Side Routing                ||||
