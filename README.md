@@ -13,10 +13,10 @@
 ## Setup
 Please make sure that you are inside the folder for this repository (the `SE-NYC-071524-Phase-2` folder) before following these instructions for setup:
 
-1. Run the following command in the terminal to create a new React application:
+1. Run the following command in the terminal to create a new React application named `pets-app`:
 
 ```
-npx create-react-app app-name
+npx create-react-app pets-app
 ```
 
 2. Run the following command in the terminal to move inside of the directory for the React application:
