@@ -1,4 +1,12 @@
+import Header from "./Header"
+import PetList from "./PetList"
+
 function App() {
+
+    // function sum(num1, num2){
+    //     console.log(num1 + num2)
+    // }
+    // sum()
 
   const pets = [
     {
@@ -39,7 +47,23 @@ function App() {
   ]
 
   return (
-    <h1>Welcome to React!</h1>
+    // <div>
+    //     <h1>Welcome to React!</h1>
+    //     <div>
+    //         <img/>
+    //         <h2>Goodbye</h2>
+    //         <h3>
+    //             <span>Flatiron School is the best!</span>
+    //         </h3>
+    //     </div>
+    // </div>
+    <div className="app">
+        {/* <Header name="Sally" age={23} />
+        <Header phoneNumber="1234567890"/> */}
+        <Header animalName="Cat" animalEmoji="🐈" />
+        <Header animalName="Dog" animalEmoji="🐶" />
+        <PetList pets={pets} />
+    </div>
   );
 }
 
