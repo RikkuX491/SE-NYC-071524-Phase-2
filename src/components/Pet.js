@@ -16,7 +16,7 @@ function Pet({pet}){
 
     // Deliverable # 6 solution code
     function toggleDisplayAnimalType(){
-        setDisplayAnimalType((displayAnimalType) => !displayAnimalType)
+        setDisplayAnimalType(!displayAnimalType)
     }
 
     return (
