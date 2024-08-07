@@ -1,49 +1,39 @@
+// Deliverable # 1 solution code
 import {useState} from "react"
 
 function Pet({pet}){
 
-    // let numberOfLikes = 0
-    const [numberOfLikes, setNumberOfLikes] = useState(0)
-    // console.log(numberOfLikes)
-    // console.log(setNumberOfLikes)
+    // Deliverable # 1 solution code
+    const [count, setCount] = useState(0)
 
+    // Deliverable # 3 solution code
     const [displayAnimalType, setDisplayAnimalType] = useState(false)
-    console.log(displayAnimalType)
 
+    // Deliverable # 2 solution code
     function handleClick(){
-        setNumberOfLikes(numberOfLikes + 1)
-        // setNumberOfLikes((numberOfLikes) => numberOfLikes + 1)
+        setCount(count + 1)
     }
 
+    // Deliverable # 6 solution code
     function toggleDisplayAnimalType(){
         setDisplayAnimalType((displayAnimalType) => !displayAnimalType)
-        // setDisplayAnimalType((displayAnimalType) => !displayAnimalType)
     }
-
-    // console.log(pet)
-
-    // function updatePetTextValue(){
-    //     if(!displayAnimalType){
-    //         return pet.name
-    //     }
-    //     else if(displayAnimalType){
-    //         return pet.animal_type
-    //     }
-    // }
 
     return (
         <li className="pet">
             <img src={pet.image} alt={pet.name}/>
-            <h4 onClick={toggleDisplayAnimalType} className={!displayAnimalType ? "" : "display-animal-type"}>
+            {/* Deliverable # 5 & 6 solution code */}
+            <h4 onClick={toggleDisplayAnimalType} className={displayAnimalType ? "display-animal-type" : ""}>
                 {
-                !displayAnimalType
+                displayAnimalType
                 ?
-                pet.name
-                :
                 pet.animal_type
+                :
+                pet.name
                 }
             </h4>
-            <button onClick={handleClick} className="like-button">{numberOfLikes} Likes</button>
+            {/* Deliverable # 1 & 2 solution code */}
+            <button onClick={handleClick} className="like-button">{count} Likes</button>
         </li>
     );
 }
