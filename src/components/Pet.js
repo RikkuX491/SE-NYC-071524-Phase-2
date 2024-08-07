@@ -6,10 +6,10 @@ function Pet({pet}){
     // Deliverable # 1 solution code
     const [count, setCount] = useState(0)
 
-    // Deliverable # 3 solution code
+    // Deliverable # 4 solution code
     const [displayAnimalType, setDisplayAnimalType] = useState(false)
 
-    // Deliverable # 2 solution code
+    // Deliverable # 3 solution code
     function handleClick(){
         setCount(count + 1)
     }
@@ -32,7 +32,7 @@ function Pet({pet}){
                 pet.name
                 }
             </h4>
-            {/* Deliverable # 1 & 2 solution code */}
+            {/* Deliverable # 2 & 3 solution code */}
             <button onClick={handleClick} className="like-button">{count} Likes</button>
         </li>
     );
