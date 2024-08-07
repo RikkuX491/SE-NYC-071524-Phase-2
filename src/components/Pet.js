@@ -22,6 +22,7 @@ function Pet({pet}){
     return (
         <li className="pet">
             <img src={pet.image} alt={pet.name}/>
+
             {/* Deliverable # 5 & 6 solution code */}
             <h4 onClick={toggleDisplayAnimalType} className={displayAnimalType ? "display-animal-type" : ""}>
                 {
@@ -32,6 +33,7 @@ function Pet({pet}){
                 pet.name
                 }
             </h4>
+            
             {/* Deliverable # 2 & 3 solution code */}
             <button onClick={handleClick} className="like-button">{count} Likes</button>
         </li>
