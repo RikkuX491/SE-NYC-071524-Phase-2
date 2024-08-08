@@ -9,25 +9,37 @@ console.log(pets)
 
 function PetPage(){
 
-    const [petsArray, setPetsArray] = useState(pets)
     const [searchText, setSearchText] = useState("")
 
-    const filteredPets = petsArray.filter(pet => {
+    // Deliverable # 3 solution code
+    const [petsState, setPetsState] = useState(pets)
+
+    const filteredPets = petsState.filter(pet => {
         return pet.name.toUpperCase().includes(searchText.toUpperCase())
     })
 
+    // Deliverable # 1 solution code
+    function updateSearchText(event){
+        setSearchText(event.target.value)
+    }
+
+    // Deliverable # 4 solution code
     function deletePet(id){
 
-        const updatedPetsData = petsArray.filter(p => {
+        const filteredPetsState = petsState.filter(p => {
             return p.id !== id
         })
 
-        setPetsArray(updatedPetsData)
+        setPetsState(filteredPetsState)
     }
 
     return (
         <main>
-            <Search setSearchText={setSearchText}/>
+
+            {/* Deliverable # 2 solution code */}
+            <Search updateSearchText={updateSearchText}/>
+            
+            {/* Deliverable # 5 solution code */}
             <PetList pets={filteredPets} deletePet={deletePet}/>
         </main>
     );
