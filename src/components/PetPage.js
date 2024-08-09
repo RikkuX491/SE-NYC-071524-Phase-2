@@ -11,6 +11,8 @@ function PetPage(){
     const [petsState, setPetsState] = useState(pets)
     const [searchText, setSearchText] = useState("")
 
+    console.log(petsState)
+
     const filteredPets = petsState.filter(pet => {
         return pet.name.toUpperCase().includes(searchText.toUpperCase())
     })
@@ -25,9 +27,16 @@ function PetPage(){
         }))
     }
 
+    function addPet(newPet){
+        // console.log(petsState)
+        // console.log(newPet)
+        const updatedPetsStateArray = [...petsState, newPet]
+        setPetsState(updatedPetsStateArray)
+    }
+
     return (
         <main>
-            <NewPetForm/>
+            <NewPetForm pets={petsState} addPet={addPet}/>
             <Search updateSearchText={updateSearchText}/>
             <PetList pets={filteredPets} deletePet={deletePet}/>
         </main>
