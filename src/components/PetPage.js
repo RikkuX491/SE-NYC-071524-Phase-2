@@ -82,7 +82,7 @@ function PetPage(){
             body: JSON.stringify(newPet)
         })
         .then(response => response.json())
-        .then(newPet => setPets([...pets, newPet]))
+        .then(newPetData => setPets([...pets, newPetData]))
     }
 
     return (
