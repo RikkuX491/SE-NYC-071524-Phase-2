@@ -23,18 +23,6 @@ function PetPage(){
     }
 
     function deletePet(id){
-        // Optimistic rendering approach for DELETE request
-        // setPets((pets) => pets.filter(pet => {
-        //     return pet.id !== id
-        // }))
-
-        // console.log(id)
-
-        // fetch(`http://localhost:4000/pets/${id}`, {
-        //     method: "DELETE"
-        // })
-
-        // Pessimistic rendering approach for DELETE request
         fetch(`http://localhost:4000/pets/${id}`, {
             method: "DELETE"
         })
@@ -43,9 +31,6 @@ function PetPage(){
                 setPets((pets) => pets.filter(pet => {
                     return pet.id !== id
                 }))
-            }
-            else{
-                alert("Error: Unable to delete pet!")
             }
         })
     }
@@ -62,45 +47,13 @@ function PetPage(){
         .then(newPetData => setPets([...pets, newPetData]))
     }
 
+    // Deliverable # 4 & 5 solution code
     function updatePet(updatedPetData, id){
-
-        // Optimistic rendering approach for PATCH request
-        // console.log(updatedPetData)
-        // console.log(id)
-
-        // const updatedPets = pets.map(pet => {
-        //     if(pet.id === id){
-
-                // console.log(pet)
-                // console.log(updatedPetData)
-                // console.log({...pet, ...updatedPetData})
-
-                // return {...pet, ...updatedPetData}
-
-                // return updatedPetData
-        //     }
-        //     else{
-        //         return pet
-        //     }
-        // })
-
-        // setPets(updatedPets)
-
-        // console.log(updatedPetData)
-
-        // fetch(`http://localhost:4000/pets/${id}`, {
-        //     method: "PATCH",
-        //     headers: {
-        //         "Content-Type": "application/json"
-        //     },
-        //     body: JSON.stringify(updatedPetData)
-        // })
-
-        // Pessimistic rendering approach for PATCH request
         fetch(`http://localhost:4000/pets/${id}`, {
             method: "PATCH",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Accept": "application/json"
             },
             body: JSON.stringify(updatedPetData)
         })
@@ -117,8 +70,6 @@ function PetPage(){
             setPets(updatedPetsArray)
         })
     }
-
-    // console.log(updatePet)
 
     return (
         <main>
