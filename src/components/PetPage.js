@@ -23,9 +23,31 @@ function PetPage(){
     }
 
     function deletePet(id){
-        setPets((pets) => pets.filter(pet => {
-            return pet.id !== id
-        }))
+        // Optimistic rendering approach for DELETE request
+        // setPets((pets) => pets.filter(pet => {
+        //     return pet.id !== id
+        // }))
+
+        // console.log(id)
+
+        // fetch(`http://localhost:4000/pets/${id}`, {
+        //     method: "DELETE"
+        // })
+
+        // Pessimistic rendering approach for DELETE request
+        fetch(`http://localhost:4000/pets/${id}`, {
+            method: "DELETE"
+        })
+        .then(response => {
+            if(response.ok){
+                setPets((pets) => pets.filter(pet => {
+                    return pet.id !== id
+                }))
+            }
+            else{
+                alert("Error: Unable to delete pet!")
+            }
+        })
     }
 
     function addPet(newPet){
@@ -40,11 +62,69 @@ function PetPage(){
         .then(newPetData => setPets([...pets, newPetData]))
     }
 
+    function updatePet(updatedPetData, id){
+
+        // Optimistic rendering approach for PATCH request
+        // console.log(updatedPetData)
+        // console.log(id)
+
+        // const updatedPets = pets.map(pet => {
+        //     if(pet.id === id){
+
+                // console.log(pet)
+                // console.log(updatedPetData)
+                // console.log({...pet, ...updatedPetData})
+
+                // return {...pet, ...updatedPetData}
+
+                // return updatedPetData
+        //     }
+        //     else{
+        //         return pet
+        //     }
+        // })
+
+        // setPets(updatedPets)
+
+        // console.log(updatedPetData)
+
+        // fetch(`http://localhost:4000/pets/${id}`, {
+        //     method: "PATCH",
+        //     headers: {
+        //         "Content-Type": "application/json"
+        //     },
+        //     body: JSON.stringify(updatedPetData)
+        // })
+
+        // Pessimistic rendering approach for PATCH request
+        fetch(`http://localhost:4000/pets/${id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(updatedPetData)
+        })
+        .then(response => response.json())
+        .then(updatedPet => {
+            const updatedPetsArray = pets.map(pet => {
+                if(pet.id === id){
+                    return updatedPet
+                }
+                else{
+                    return pet
+                }
+            })
+            setPets(updatedPetsArray)
+        })
+    }
+
+    // console.log(updatePet)
+
     return (
         <main>
             <NewPetForm addPet={addPet}/>
             <Search updateSearchText={updateSearchText} searchText={searchText}/>
-            <PetList pets={filteredPets} deletePet={deletePet}/>
+            <PetList pets={filteredPets} deletePet={deletePet} updatePet={updatePet}/>
         </main>
     );
 }
