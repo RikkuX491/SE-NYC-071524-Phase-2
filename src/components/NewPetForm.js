@@ -1,12 +1,18 @@
 import { useState } from "react";
 
-function NewPetForm({addPet}) {
+import { useOutletContext, useNavigate } from "react-router-dom";
+
+function NewPetForm() {
+
+  const {addPet} = useOutletContext()
 
   const [formData, setFormData] = useState({
     name: "",
     image: "",
     animal_type: ""
   })
+
+  const navigate = useNavigate()
 
   function updateFormData(event){
     setFormData({...formData, [event.target.name]: event.target.value})
@@ -26,6 +32,8 @@ function NewPetForm({addPet}) {
       image: "",
       animal_type: ""
     })
+
+    navigate('/')
   }
 
   return (

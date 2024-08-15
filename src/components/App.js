@@ -2,10 +2,15 @@ import Header from "./Header";
 import PetList from "./PetList";
 import { useState, useEffect } from "react";
 import NewPetForm from "./NewPetForm";
+import ErrorPage from "./ErrorPage";
+import NavBar from "./NavBar";
+
+import { Outlet } from "react-router-dom";
 
 function App(){
 
     const [pets, setPets] = useState([])
+    
     // const [route, setRoute] = useState(window.location.pathname)
 
     // let component = null
@@ -14,6 +19,9 @@ function App(){
     // }
     // else if(route === "/add_pet"){
     //   component = <NewPetForm addPet={addPet}/>
+    // }
+    // else{
+    //     component = <ErrorPage/>
     // }
 
     useEffect(() => {
@@ -78,14 +86,16 @@ function App(){
 
     return (
       <div className="app">
+        <NavBar/>
         {/* <nav className="navbar">
-          <a className={route === "/" ? "active" : ""} onClick={(event) => navigate(event, "/")} href="/">Home</a>
-          <a className={route === "/add_pet" ? "active" : ""} onClick={(event) => navigate(event, "/add_pet")} href="/add_pet">Add Pet</a>
+          <a className={route === "/" ? "active" : ""} onClick={navigate} href="/">Home</a>
+          <a className={route === "/add_pet" ? "active" : ""} onClick={navigate} href="/add_pet">Add Pet</a>
         </nav> */}
         <Header/>
-        <NewPetForm addPet={addPet}/>
-        <PetList pets={pets} deletePet={deletePet} updatePet={updatePet}/>
+        <Outlet context={{pets: pets, deletePet: deletePet, updatePet: updatePet, addPet: addPet}}/>
         {/* {component} */}
+        {/* <NewPetForm addPet={addPet}/> */}
+        {/* <PetList pets={pets} deletePet={deletePet} updatePet={updatePet}/> */}
       </div>
     );
 }

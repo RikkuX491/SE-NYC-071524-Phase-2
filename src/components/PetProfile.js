@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 
-function PetProfile({deletePet, updatePet}){
+import { useOutletContext, useParams, useNavigate } from "react-router-dom";
+
+function PetProfile(){
+
+    const {deletePet, updatePet} = useOutletContext()
+    const {id} = useParams()
+    const navigate = useNavigate()
 
     const [pet, setPet] = useState(null)
     const [displayAnimalType, setDisplayAnimalType] = useState(false)
@@ -13,6 +19,12 @@ function PetProfile({deletePet, updatePet}){
 
     useEffect(() => {
         // Make a GET request to find a specific pet whose info should be displayed in this component
+        fetch(`http://localhost:4000/pets/${id}`)
+        .then(response => {
+            if(response.ok){
+                response.json().then(petData => setPet(petData))
+            }
+        })
     }, [])
 
     function toggleDisplayAnimalType(){
@@ -22,6 +34,7 @@ function PetProfile({deletePet, updatePet}){
     function handleAdoptButtonClick(){
         deletePet(pet.id)
         setPet(null)
+        navigate('/')
     }
 
     function toggleDisplayForm(){
@@ -70,7 +83,7 @@ function PetProfile({deletePet, updatePet}){
                 </form>
                 }
             </div> :
-            null
+            <h1>Error: Pet # {id} was not found!</h1>
             }
         </>
     );
